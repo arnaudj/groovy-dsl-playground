@@ -53,11 +53,15 @@ class RobotDslTest {
 
     @Test
     void testCommandChain() {
-        Distance distance = new Distance(100, "m")
-        Speed speed = new Speed(new Distance(30, "km"), hour)
-        def state = robot.moveCC FORWARD by distance at speed
+        def state = robot.moveCC FORWARD by new Distance(100, "m") at new Speed(new Distance(30, "km"), hour)
         // Equivalent to : def state = robot.moveCC(FORWARD).by(distance).at(speed)
         Assert.assertEquals("Moving in direction FORWARD of distance 100m at speed 30km/hour", state)
+
+        // with use
+        use(DistanceCategory) {
+            state = robot.moveCC FORWARD by 110.m at 35.km/hour
+            Assert.assertEquals("Moving in direction FORWARD of distance 110m at speed 35km/hour", state)
+        }
     }
 
 }
