@@ -1,16 +1,18 @@
 package com.github.arnaudj.robot
 
-class Distance {
-    final Number length
-    final String unit
+import groovy.transform.TupleConstructor
 
-    Distance(Number length, String unit) {
-        this.length = length
-        this.unit = unit
-    }
+@TupleConstructor
+class Distance {
+    Number length
+    String unit
 
     @Override
     String toString() {
         return length + unit
+    }
+
+    Speed div(Duration duration) {
+        new Speed(this, duration)
     }
 }
