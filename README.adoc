@@ -1,0 +1,1 @@
+A playground project to test misc ways of implementing DSL and dynamic programming with Groovy.
