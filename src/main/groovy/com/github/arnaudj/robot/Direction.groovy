@@ -2,8 +2,8 @@ package com.github.arnaudj.robot
 
 enum Direction {
     NONE,
-    FWD,
-    BACKWD,
+    FORWARD,
+    BACKWARD,
     LEFT,
     RIGHT
 }
