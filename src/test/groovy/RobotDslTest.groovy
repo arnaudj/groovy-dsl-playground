@@ -6,6 +6,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
+import static com.github.arnaudj.robot.Direction.BACKWARD
 import static com.github.arnaudj.robot.Direction.FORWARD
 import static com.github.arnaudj.robot.Duration.hour
 
@@ -22,6 +23,12 @@ class RobotDslTest {
     void testMoveNoParenthesis() {
         def state = robot.move FORWARD
         Assert.assertEquals("Moving in direction FORWARD", state)
+
+        // with closure context switch
+        robot.with {
+            state = move BACKWARD
+            Assert.assertEquals("Moving in direction BACKWARD", state)
+        }
     }
 
     @Test
