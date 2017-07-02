@@ -1,14 +1,14 @@
 import com.github.arnaudj.robot.Direction
 import com.github.arnaudj.robot.Distance
+import com.github.arnaudj.robot.DistanceCategory
 import com.github.arnaudj.robot.Robot
-import com.github.arnaudj.robot.dsl.DistanceCategory
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
 // Groovy in action DSL 'koans' (chapter 18)
 class RobotDslTest {
-    def robot
+    Robot robot
 
     @Before
     void setup() {
@@ -24,9 +24,9 @@ class RobotDslTest {
     @Test
     void testPseudoExtensionMethodViaUseKeyword() {
         use(DistanceCategory) {
-            def state = robot.move Direction.FWD, 2.meters
+            def state = robot.move Direction.FWD, 2.m
             Assert.assertEquals("Moving in direction FWD of distance 2m", state)
-            state = robot.move Direction.FWD, 200.centimeters
+            state = robot.move Direction.FWD, 200.cm
             Assert.assertEquals("Moving in direction FWD of distance 200cm", state)
         }
     }
@@ -38,7 +38,8 @@ class RobotDslTest {
 
         // with use
         use(DistanceCategory) {
-            state = robot.move Direction.FWD, by: 1.meters, at: "5km/h"
+            // with distance DSL
+            state = robot.move Direction.FWD, by: 1.m, at: "5km/h"
             Assert.assertEquals("Moving in direction FWD of distance 1m at speed 5km/h", state)
         }
     }
