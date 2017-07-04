@@ -1,15 +1,16 @@
 package com.github.arnaudj.robot
 
+@Category(Number.class)
 class DistanceCategory {
-    static Distance getM(Number number) {
-        return new Distance(number, "m")
+    Distance getM() {
+        new Distance(this, "m")
     }
 
-    static Distance getCm(Number number) {
-        return new Distance(number, "cm")
+    Distance getCm() {
+        new Distance(this, "cm")
     }
 
-    static Distance getKm(Number number) {
-        return new Distance(number, "km")
+    Distance getKm() {
+        new Distance(this, "km")
     }
 }
