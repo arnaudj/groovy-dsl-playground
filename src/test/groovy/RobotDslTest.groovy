@@ -32,6 +32,14 @@ class RobotDslTest {
     }
 
     @Test
+    void testMoveWithClosure() {
+        def state = robot.actions {
+            move FORWARD
+        }
+        Assert.assertEquals("Moving in direction FORWARD", state)
+    }
+
+    @Test
     void testPseudoExtensionMethodViaUseKeyword() {
         use(DistanceCategory) {
             def state = robot.move FORWARD, 2.m

@@ -22,4 +22,10 @@ class Robot {
             }]
         }]
     }
+
+    def actions(@DelegatesTo(Robot.class) Closure closure) {
+        closure.delegate = this
+        //closure.resolveStrategy = Closure.DELEGATE_FIRST
+        closure.call()
+    }
 }
